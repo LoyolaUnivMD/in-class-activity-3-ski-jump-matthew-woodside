@@ -10,6 +10,7 @@
 // Imports the utilities Objects and Scanner
 import java.util.Objects;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 class Main {
     public static void main(String[] args) {
@@ -24,6 +25,9 @@ class Main {
 
 // Sets up the Scanner utility with the key word 'input'
         Scanner input = new Scanner(System.in);
+
+// Sets up the Decimal Format utility
+        DecimalFormat fmt = new DecimalFormat("#0.00");
 
 // Outputs purpose of the program
         System.out.println("Welcome to the slopes! Enter your hill type and height and we'll calculate your points!");
@@ -71,11 +75,11 @@ class Main {
         }
 
 // Calculates the air time, distance, and points for the user and outputs them
-        double air_time = 2*height/9.8;
+        double air_time = Math.sqrt(2*height/9.8);
         double distance = speed * air_time;
         double points = 60 + (distance - par)*points_per_meter;
-        System.out.println("You travelled "+distance+" far!");
-        System.out.println("You earned "+points+"points");
+        System.out.println("You travelled "+ fmt.format(distance)+" far!");
+        System.out.println("You earned "+ fmt.format(points)+" points");
 
 // If-statement which outputs a message reflecting the user's performance         
         if (points >= 61){
